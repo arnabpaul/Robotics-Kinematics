@@ -45,9 +45,9 @@ $ ./safe_spawner.sh
 
 [//]: # (Image References)
 
-[image1]: ./misc_images/misc1.png
-[image2]: ./misc_images/theta_calc.jpg
-[image3]: ./misc_images/pickNplace.png
+[image1]: ./misc1.png
+[image2]: ./theta_calc.jpg
+[image3]: ./pickNplace.png
 
 ### Kinematic Analysis
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
