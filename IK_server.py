@@ -58,13 +58,13 @@ def handle_calculate_IK(req):
 	# Create Modified DH parameters
 	# KUKA KR210 ###
 	# Creating DH Parameter dictionary
-	s={alpha0:     0, a0:     0, d1: 0.75, 
+	s={alpha0:     0, a0:     0, d1: 0.75, q1: q1,
    	   alpha1: -pi/2, a1:  0.35, d2:    0, q2: q2-pi/2,
-   	   alpha2:     0, a2:  1.25, d3:    0, 
-   	   alpha3: -pi/2, a3:-0.054, d4: 1.50, 
-   	   alpha4:  pi/2, a4:     0, d5:    0, 
-   	   alpha5: -pi/2, a5:     0, d6:    0, 
-   	   alpha6:     0, a6:     0, d7:0.303, q7:0}
+   	   alpha2:     0, a2:  1.25, d3:    0, q3: q3,
+   	   alpha3: -pi/2, a3:-0.054, d4: 1.50, q4: q4,
+   	   alpha4:  pi/2, a4:     0, d5:    0, q5: q5,
+   	   alpha5: -pi/2, a5:     0, d6:    0, q6: q6,
+   	   alpha6:     0, a6:     0, d7:0.303, q7: 0 }
 
 
 	# Define Modified DH Transformation matrix
@@ -112,7 +112,7 @@ def handle_calculate_IK(req):
 
 	# Create individual transformation matrices
 	T0_3=T0_1*T1_2*T2_3
-	T0_G=T0_1*T1_2*T2_3*T3_4*T4_5*T5_6*T6_G
+	#T0_G=T0_1*T1_2*T2_3*T3_4*T4_5*T5_6*T6_G
 
 		#Gripper Link in URDF vs DH Convension
 
@@ -166,8 +166,6 @@ def handle_calculate_IK(req):
 		### Define functions for Rotation Matrices about x, y, and z given specific angle.
 
 	    # Compensate for rotation discrepancy between DH parameters and Gazebo
-	    #Wx,Wy,Wz=wrist positions
-	    #d7=end-effector length
 	    Rrpy=rot_z(yaw)*rot_y(pitch)*rot_x(roll)*R_corr
 	    nx=Rrpy[0,2]
 	    ny=Rrpy[1,2]
@@ -180,20 +178,20 @@ def handle_calculate_IK(req):
 	    ##theta1
 	    theta1=atan2(Wy,Wx)
 	    ##theta2
-	   # phi=atan2((Wz-d1),sqrt((Wy-a1)**2+Wx**2))
-	   # B=sqrt((Wy-a1)**2+Wx**2+(Wz-d1)**2)
-	   # C=a2
-	   # A=d4
-	   # alpha=acos2((B**2+C**2-A**2)/(2*B*C))
-	   # theta2=pi/2-(alpha+phi)
+	   #
+	   #
+	   #
+	   #
 	    ##theta3
-	   # gamma=acos2((A**2+C**2-B**2)/(2*A*C))
-	   # sai=asin2(a3,d4)
-	   # theta3=-(pi/2+gamma+sai)
+	   #
+	   #
 
 	   ##SSS triangle for theta2 and theta3
-	    side_a=1.501
-	    side_b=(pow(sqrt(Wx**2+Wy**2)-0.35),2)+pow((Wz**2-0.75),2))
+            side_a=1.501
+	    #b_x=sqrt(Wx**2+Wy**2)-0.35
+	    #b_y=(Wz**2-0.75)
+	    #side_b=b_x*b_x+b_y*b_y
+	    side_b=sqrt((sqrt(Wx**2+Wy**2)-0.35)**2+(Wz-0.75)**2)
 	    side_c=1.25
 
 	    angle_a=acos((side_b**2+side_c**2-side_a**2)/(2*side_b*side_c))
