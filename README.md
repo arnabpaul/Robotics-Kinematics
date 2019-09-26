@@ -32,7 +32,7 @@ $ ./safe_spawner.sh
 
 5. Perform Kinematic Analysis for the robot
 
-6. Fill in the `IK_server.py` with Inverse Kinematics code. 
+6. Write `IK_server.py` for Inverse Kinematics code. 
 
 [//]: # (Image References)
 
