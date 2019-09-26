@@ -144,7 +144,7 @@ Also, attached pdf "IK_calc" contains drawing to derive the relation between joi
 
 ### Project Implementation
 
-#### 1. Filled in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. 
+#### 1. Wrote the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. 
 
 Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
 
