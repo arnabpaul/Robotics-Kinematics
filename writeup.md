@@ -1,8 +1,5 @@
 ## Project: Kinematics Pick & Place
 
-### Writeup / README
-
-#### 1. 
 
 **Steps to complete the project:**  
 
